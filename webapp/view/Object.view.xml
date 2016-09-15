@@ -55,14 +55,16 @@
 				<StandardTile
 					press="onPress"
 					id="loans"
-					icon=""
-					title="Loans"
-					info="Overdue"
-					number="2356"
-					numberUnit="euro"
+					icon="sap-icon://warning"
+					title="{TotalLoans} Loans"
+					info="{TotalDueBalance}"
+					number="{
+						path: 'TotalRemBalance'
+						
+					}"
+					numberUnit="{Currency}"
 					infoState="Error"
 				/>
-				<!--
 				<StandardTile
 					id="deposits"
 					icon=""
@@ -122,7 +124,7 @@
 					icon=""
 					title=""
 					info=""
-				/>-->
+				/>
 			</TileContainer>
  		</semantic:content>
 

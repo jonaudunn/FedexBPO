@@ -91,15 +91,6 @@ sap.ui.define([
 				// The source is the list item that got pressed
 				this._showObject(oEvent.getSource());
 			},
-			
-			handleSuggest: function(oEvent) {
-				var value = oEvent.getParameter("suggestValue");
-				var filters = [];
-				if (value) {
-					filters.push(new Filter("Name", FilterOperator.Contains, value));
-					oEvent.getSource().getBinding("suggestionItems").filter(filters);
-				}
-			},
 
 			/**
 			 * Event handler for navigating back.
@@ -146,13 +137,7 @@ sap.ui.define([
 					// refresh the list binding.
 					this.onRefresh();
 				} else {
-					var item = oEvent.getParameter("suggestionItem");
-					if (item) {
-						oEvent.getSource().value = item;
-						
-						sap.m.MessageToast.show("search for: "+ item.getText());
-					}
-/*					var oTableSearchState = [];
+					var oTableSearchState = [];
 					var sQuery = oEvent.getParameter("query");
 
 					if (sQuery && sQuery.length > 0) {
@@ -161,30 +146,8 @@ sap.ui.define([
 											 new Filter("Email", FilterOperator.Contains, sQuery)], false);
 					}
 					this._applySearch(oTableSearchState);
-*/				}
-
-			},
-
-			onSuggest: function (oEvent) {
-				var value = oEvent.getParameter("suggestValue");
-				var filters = [];
-				if(value) {
-					filters.push(new Filter("Name", FilterOperator.Contains, value));
-					// filters = [new Filter([new Filter("Name", function(sDes) {
-					// 					 return (sDes || "").toUpperCase().indexOf(value.toUpperCase()) > -1; })
-					// 					 ], false)];
-				/*	filters = new Filter([new Filter("Name", FilterOperator.Contains, value),
-										  new Filter("Telephone", FilterOperator.Contains, value),
-										  new Filter("Email", FilterOperator.Contains, value)], false);*/
 				}
-				var oSF = oEvent.getSource();
-				var oBinding = oSF.getBinding("suggestionItems");
-				oBinding.filter(filters);
-				//this.oSF.getBinding("suggestionItems").filter(filters);
-				oBinding.attachEventOnce('dataReceived', function() {
-					// now activate suggestion popup
-					oSF.suggest(); 
-				});
+
 			},
 
 			/**

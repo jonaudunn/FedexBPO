@@ -34,32 +34,11 @@
 					<Toolbar>
 						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
 						<ToolbarSpacer />
-<!--						<Input
-							id="businessPartner"
-							type="Text"
-							placeholder="Search for Business Partner"
-							showSuggestion="true"
-							suggest="handleSuggest"
-							suggestionItems="{/BPDATASet}"
-							width="50%" >
-							<suggestionItems>
-								<core:Item text="{Name}" />
-							</suggestionItems>
-						</Input>
--->	
 						<SearchField
 							id="searchField"
 							tooltip="{i18n>worklistSearchTooltip}"
-							enableSuggestions="true"
 							search="onSearch"
-							suggest="onSuggest"
-							suggestionItems="{
-								path: '/BPDATASet'
-							}"
 							width="auto">
-							<suggestionItems>
-								<SuggestionItem description="{path: 'Partner'} - {path: 'Name'} {path:'Street'} {path: 'City'} {path:'Phone'} {path:'Email'}" />
-							</suggestionItems>
 						</SearchField>
 				</Toolbar>
 				</headerToolbar>

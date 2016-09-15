@@ -117,6 +117,9 @@ sap.ui.define([
 
 				this.getView().bindElement({
 					path: sObjectPath,
+					parameters: {
+						expand: "loansSet"
+					},
 					events: {
 						change: this._onBindingChange.bind(this),
 						dataRequested: function () {
@@ -133,6 +136,7 @@ sap.ui.define([
 						}
 					}
 				});
+
 			},
 
 			_onBindingChange : function () {

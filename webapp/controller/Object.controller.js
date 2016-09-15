@@ -88,6 +88,7 @@ sap.ui.define([
 			onPress: function (oEvent) {
 				// The source is the list item that got pressed
 				this._showLoans(oEvent.getSource());
+				console.log(this.getView().getBindingContext().getObject());
 			},
 
 			/* =========================================================== */
@@ -124,6 +125,7 @@ sap.ui.define([
 
 				this.getView().bindElement({
 					path: sObjectPath,
+	
 					events: {
 						change: this._onBindingChange.bind(this),
 						dataRequested: function () {

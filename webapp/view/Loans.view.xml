@@ -49,7 +49,48 @@
 				</attributes>
 			</ObjectHeader>
  		</semantic:content>
+ 		
  		<semantic:content>
+ 			<Table
+				id="loansTable"
+				width="auto"
+				class="sapUiResponsiveMargin"
+				items="{
+					path: 'loansSet'
+				}"
+				growing="true"
+				growingScrollToLoad="true"
+				updateFinished="onUpdateFinished">
+
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader" text="Loans"/>
+				</Toolbar>
+				</headerToolbar>
+
+				<columns>
+					<Column id="companyColumn">
+						<Text text="Company" id="companyColumnTitle"/>
+					</Column>
+					<Column id="loanNumberColumn">
+						<Text text="Loan Number" id="loanNumberColumnTitle"/>
+					</Column>
+					<Column id="productColumn">
+						<Text text="Product" id="productColumnTitle"/>
+					</Column>
+				</columns>
+
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectIdentifier
+								title="{CompanyCode}"/>
+							<Text text="{LoanNumber}"/>
+							<Text text="{ProductText}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
  			<!--<smartFilterBar:SmartFilterBar id="smartFilterBar" entityType="LineItems" persistencyKey="SmartFilter_Explored">
 				<smartFilterBar:controlConfiguration>						
 					<smartFilterBar:ControlConfiguration key="Bukrs">
