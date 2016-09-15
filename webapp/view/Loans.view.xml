@@ -70,13 +70,31 @@
 
 				<columns>
 					<Column id="companyColumn">
-						<Text text="Company" id="companyColumnTitle"/>
+						<Text text="Loan Number" id="companyColumnTitle"/>
 					</Column>
-					<Column id="loanNumberColumn">
-						<Text text="Loan Number" id="loanNumberColumnTitle"/>
+					<Column id="capitalColumn">
+						<Text text="Capital" id="capitalColumnTitle"/>
 					</Column>
-					<Column id="productColumn">
-						<Text text="Product" id="productColumnTitle"/>
+					<Column id="remBalColumn">
+						<Text text="Remaining Balance" id="remBalColumnTitle"/>
+					</Column>
+					<Column id="effBalColumn">
+						<Text text="Effective Balance" id="effBalColumnTitle"/>
+					</Column>
+					<Column id="repaymentColumn">
+						<Text text="Repayment" id="repaymentColumnTitle"/>
+					</Column>
+					<Column id="interestColumn">
+						<Text text="Interest" id="interestColumnTitle"/>
+					</Column>
+					<Column id="costColumn">
+						<Text text="Other Cost" id="costColumnTitle"/>
+					</Column>
+					<Column id="payoffColumn">
+						<Text text="Payoff" id="payoffColumnTitle"/>
+					</Column>
+					<Column id="currencyColumn">
+						<Text text="Currency" id="currencyColumnTitle" textAlign="Right"/>
 					</Column>
 				</columns>
 
@@ -84,42 +102,34 @@
 					<ColumnListItem>
 						<cells>
 							<ObjectIdentifier
-								title="{CompanyCode}"/>
-							<Text text="{LoanNumber}"/>
-							<Text text="{ProductText}"/>
+										title="{LoanNumber}"
+										text="{ProductText}"
+										titleActive="true"
+										titlePress="onShowDetailPopover" />
+							
+							<Text text="{Capital}"/>
+							<Text text="{RemBalance}"/>
+							<Text text="{EffBalance}"/>
+							<Text text="{RepaymentAmount}"/>
+							<Text text="{InterestAmount}"/>
+							<Text text="{CostAmount}"/>
+							<Text text="{PayoffAmount}"/>
+							<FormattedText htmlText="&lt;strong&gt;{Currency}&lt;/strong&gt;" />
 						</cells>
 					</ColumnListItem>
 				</items>
 			</Table>
- 			<!--<smartFilterBar:SmartFilterBar id="smartFilterBar" entityType="LineItems" persistencyKey="SmartFilter_Explored">
-				<smartFilterBar:controlConfiguration>						
-					<smartFilterBar:ControlConfiguration key="Bukrs">
-						<smartFilterBar:defaultFilterValues>
-							<smartFilterBar:SelectOption low="0001">
-							</smartFilterBar:SelectOption>
-						</smartFilterBar:defaultFilterValues>
-					</smartFilterBar:ControlConfiguration>					
-					<smartFilterBar:ControlConfiguration key="Gjahr">
-						<smartFilterBar:defaultFilterValues>
-							<smartFilterBar:SelectOption low="2014">
-							</smartFilterBar:SelectOption>
-						</smartFilterBar:defaultFilterValues>
-					</smartFilterBar:ControlConfiguration>
-				</smartFilterBar:controlConfiguration>					
-			</smartFilterBar:SmartFilterBar>-->
-			<!--<smartTable:SmartTable
-				entitySet="Loans"
-				smartFilterId="smartFilterBar"
+<!--			<smartTable:SmartTable
+				entitySet="loansSet"
 				tableType="ResponsiveTable"
 				useExportToExcel="true"
 				useVariantManagement="false"
 				useTablePersonalisation="true"
 				header="Line Items"
 				showRowCount="true"
-				persistencyKey="SmartTableAnalytical_Explored"
 				enableAutoBinding="true"
-				demandPopin="true"/>-->                                   
-		</semantic:content>
+				demandPopin="true"/>
+-->		</semantic:content>
 
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
