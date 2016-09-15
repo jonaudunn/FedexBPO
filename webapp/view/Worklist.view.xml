@@ -1,0 +1,108 @@
+<mvc:View
+	controllerName="is.applicon.test.controller.Worklist"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<semantic:FullscreenPage
+		id="page"
+		navButtonPress="onNavBack"
+		showNavButton="true"
+		title="{i18n>worklistViewTitle}">
+		<semantic:content>
+			<Table
+				id="table"
+				width="auto"
+				class="sapUiResponsiveMargin"
+				items="{
+					path: '/BPDATASet',
+					sorter: {
+						path: 'Name',
+						descending: false
+					}
+				}"
+				noDataText="{worklistView>/tableNoDataText}"
+				busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true"
+				growingScrollToLoad="true"
+				updateFinished="onUpdateFinished">
+
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
+						<ToolbarSpacer />
+<!--						<Input
+							id="businessPartner"
+							type="Text"
+							placeholder="Search for Business Partner"
+							showSuggestion="true"
+							suggest="handleSuggest"
+							suggestionItems="{/BPDATASet}"
+							width="50%" >
+							<suggestionItems>
+								<core:Item text="{Name}" />
+							</suggestionItems>
+						</Input>
+-->	
+						<SearchField
+							id="searchField"
+							tooltip="{i18n>worklistSearchTooltip}"
+							enableSuggestions="true"
+							search="onSearch"
+							suggest="onSuggest"
+							suggestionItems="{
+								path: '/BPDATASet'
+							}"
+							width="auto">
+							<suggestionItems>
+								<SuggestionItem description="{path: 'Partner'} - {path: 'Name'} {path:'Street'} {path: 'City'} {path:'Phone'} {path:'Email'}" />
+							</suggestionItems>
+						</SearchField>
+				</Toolbar>
+				</headerToolbar>
+
+				<columns>
+					<Column id="nameColumn">
+						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+					</Column>
+					<Column id="phoneColumn">
+						<Text text="{i18n>tablePhoneColumnTitle}" id="phoneColumnTitle"/>
+					</Column>
+					<Column id="emailColumn">
+						<Text text="{i18n>tableEmailColumnTitle}" id="emailColumnTitle"/>
+					</Column>
+				</columns>
+
+				<items>
+					<ColumnListItem
+						type="Navigation"
+						press="onPress">
+						<cells>
+							<ObjectIdentifier
+								title="{Name}"/>
+							<Text text="{Telephone}"/>
+							<Text text="{Email}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id ="shareTile" title="{worklistView>/saveAsTileTitle}" />
+		</semantic:saveAsTileAction>
+
+	</semantic:FullscreenPage>
+
+</mvc:View>
