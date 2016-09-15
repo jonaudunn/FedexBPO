@@ -30,6 +30,9 @@
     },
     "/webapp/view/Object.view.xml": {
       "entitySet": "BPDATASet"
+    },
+    "/webapp/view/Loans.view.xml": {
+      "entitySet": "BPDATASet"
     }
   },
   "generation": [

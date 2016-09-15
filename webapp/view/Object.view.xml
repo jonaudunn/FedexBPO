@@ -53,6 +53,7 @@
 			<TileContainer
 			id="tileContainer">
 				<StandardTile
+					press="onPress"
 					id="loans"
 					icon=""
 					title="Loans"
@@ -61,6 +62,7 @@
 					numberUnit="euro"
 					infoState="Error"
 				/>
+				<!--
 				<StandardTile
 					id="deposits"
 					icon=""
@@ -120,7 +122,7 @@
 					icon=""
 					title=""
 					info=""
-				/>
+				/>-->
 			</TileContainer>
  		</semantic:content>
 

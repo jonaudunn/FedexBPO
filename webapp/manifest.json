@@ -39,10 +39,7 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": [
-			"sap_hcb",
-			"sap_bluecrystal"
-		]
+		"supportedThemes": ["sap_hcb", "sap_bluecrystal"]
 	},
 	"sap.ui5": {
 		"rootView": {
@@ -92,28 +89,23 @@
 				"controlId": "app",
 				"controlAggregation": "pages",
 				"bypassed": {
-					"target": [
-						"notFound"
-					]
+					"target": ["notFound"]
 				},
 				"async": true
 			},
-			"routes": [
-				{
-					"pattern": "",
-					"name": "worklist",
-					"target": [
-						"worklist"
-					]
-				},
-				{
-					"pattern": "BPDATASet/{objectId}",
-					"name": "object",
-					"target": [
-						"object"
-					]
-				}
-			],
+			"routes": [{
+				"pattern": "",
+				"name": "worklist",
+				"target": ["worklist"]
+			}, {
+				"pattern": "BPDATASet/{objectId}",
+				"name": "object",
+				"target": ["object"]
+			}, {
+				"pattern": "BPDATASet/{objectId}/loans",
+				"name": "loans",
+				"target": ["loans"]
+			}],
 			"targets": {
 				"worklist": {
 					"viewName": "Worklist",
@@ -124,6 +116,11 @@
 					"viewName": "Object",
 					"viewId": "object",
 					"viewLevel": 2
+				},
+				"loans": {
+					"viewName": "Loans",
+					"viewId": "loans",
+					"viewLevel": 3
 				},
 				"objectNotFound": {
 					"viewName": "ObjectNotFound",

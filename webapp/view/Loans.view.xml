@@ -1,0 +1,97 @@
+<mvc:View
+	controllerName="is.applicon.test.controller.Loans"
+	xmlns="sap.m"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<semantic:FullscreenPage
+		id="page"
+		navButtonPress="onNavBack"
+		showNavButton="true"
+		title="Loans"
+		busy="{loansView>/busy}"
+		busyIndicatorDelay="{loansView>/delay}">
+		
+		<semantic:content>
+			
+			<ObjectHeader
+				id="objectHeader"
+				title="{Name}"
+				fullScreenOptimized="true"
+				responsive="true">
+				<attributes>
+					<ObjectAttribute
+						title="BP Number"
+						text="{Partner}"
+					/>
+					<ObjectAttribute
+						title="SSN"
+						text="{SSN}"
+					/>
+					<ObjectAttribute
+						title="Email"
+						text="{Email}"
+					/>
+					<ObjectAttribute
+						title="Telephone"
+						text="{Telephone}"
+					/>
+					<ObjectAttribute
+						title="Address"
+						text="{Street}, {PostalCode} {City}"
+					/>
+					<ObjectAttribute
+						title="Country"
+						text="{Country}"
+					/>
+				</attributes>
+			</ObjectHeader>
+ 		</semantic:content>
+ 		<semantic:content>
+ 			<!--<smartFilterBar:SmartFilterBar id="smartFilterBar" entityType="LineItems" persistencyKey="SmartFilter_Explored">
+				<smartFilterBar:controlConfiguration>						
+					<smartFilterBar:ControlConfiguration key="Bukrs">
+						<smartFilterBar:defaultFilterValues>
+							<smartFilterBar:SelectOption low="0001">
+							</smartFilterBar:SelectOption>
+						</smartFilterBar:defaultFilterValues>
+					</smartFilterBar:ControlConfiguration>					
+					<smartFilterBar:ControlConfiguration key="Gjahr">
+						<smartFilterBar:defaultFilterValues>
+							<smartFilterBar:SelectOption low="2014">
+							</smartFilterBar:SelectOption>
+						</smartFilterBar:defaultFilterValues>
+					</smartFilterBar:ControlConfiguration>
+				</smartFilterBar:controlConfiguration>					
+			</smartFilterBar:SmartFilterBar>-->
+			<!--<smartTable:SmartTable
+				entitySet="Loans"
+				smartFilterId="smartFilterBar"
+				tableType="ResponsiveTable"
+				useExportToExcel="true"
+				useVariantManagement="false"
+				useTablePersonalisation="true"
+				header="Line Items"
+				showRowCount="true"
+				persistencyKey="SmartTableAnalytical_Explored"
+				enableAutoBinding="true"
+				demandPopin="true"/>-->                                   
+		</semantic:content>
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id ="shareTile" title="{loansView>/saveAsTileTitle}" />
+		</semantic:saveAsTileAction>
+
+	</semantic:FullscreenPage>
+
+</mvc:View>

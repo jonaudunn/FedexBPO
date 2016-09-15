@@ -1,5 +1,4 @@
 /*global location*/
-/* eslint no-console: 0 */
 sap.ui.define([
 		"is/applicon/test/controller/BaseController",
 		"sap/ui/model/json/JSONModel",
@@ -13,7 +12,7 @@ sap.ui.define([
 	) {
 		"use strict";
 
-		return BaseController.extend("is.applicon.test.controller.Object", {
+		return BaseController.extend("is.applicon.test.controller.Loans", {
 
 			formatter: formatter,
 
@@ -35,11 +34,11 @@ sap.ui.define([
 						delay : 0
 					});
 
-				this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
+				this.getRouter().getRoute("loans").attachPatternMatched(this._onObjectMatched, this);
 
 				// Store original busy indicator delay, so it can be restored later on
 				iOriginalBusyDelay = this.getView().getBusyIndicatorDelay();
-				this.setModel(oViewModel, "objectView");
+				this.setModel(oViewModel, "loansView");
 				this.getOwnerComponent().getModel().metadataLoaded().then(function () {
 						// Restore original busy indicator delay for the object view
 						oViewModel.setProperty("/delay", iOriginalBusyDelay);
@@ -50,12 +49,13 @@ sap.ui.define([
 			/* =========================================================== */
 			/* event handlers                                              */
 			/* =========================================================== */
+
 			/**
 			 * Event handler when the share in JAM button has been clicked
 			 * @public
 			 */
 			onShareInJamPress : function () {
-				var oViewModel = this.getModel("objectView"),
+				var oViewModel = this.getModel("loansView"),
 					oShareDialog = sap.ui.getCore().createComponent({
 						name: "sap.collaboration.components.fiori.sharing.dialog",
 						settings: {
@@ -83,11 +83,6 @@ sap.ui.define([
 				} else {
 					this.getRouter().navTo("worklist", {}, true);
 				}
-			},
-			
-			onPress: function (oEvent) {
-				// The source is the list item that got pressed
-				this._showLoans(oEvent.getSource());
 			},
 
 			/* =========================================================== */
@@ -117,10 +112,8 @@ sap.ui.define([
 			 * @private
 			 */
 			_bindView : function (sObjectPath) {
-				var oViewModel = this.getModel("objectView"),
+				var oViewModel = this.getModel("loansView"),
 					oDataModel = this.getModel();
-					
-				oViewModel.setProperty("Partner", sObjectPath);
 
 				this.getView().bindElement({
 					path: sObjectPath,
@@ -144,12 +137,12 @@ sap.ui.define([
 
 			_onBindingChange : function () {
 				var oView = this.getView(),
-					oViewModel = this.getModel("objectView"),
+					oViewModel = this.getModel("loansView"),
 					oElementBinding = oView.getElementBinding();
 
 				// No data for the binding
 				if (!oElementBinding.getBoundContext()) {
-					this.getRouter().getTargets().display("objectNotFound");
+					this.getRouter().getTargets().display("loansNotFound");
 					return;
 				}
 
@@ -166,12 +159,6 @@ sap.ui.define([
 				oResourceBundle.getText("shareSendEmailObjectSubject", [sObjectId]));
 				oViewModel.setProperty("/shareSendEmailMessage",
 				oResourceBundle.getText("shareSendEmailObjectMessage", [sObjectName, sObjectId, location.href]));
-			},
-			
-			_showLoans : function () {
-				this.getRouter().navTo("loans", {
-					objectId: this.getView().getBindingContext().getObject().Partner
-				});
 			}
 
 		});

@@ -52,8 +52,6 @@ sap.ui.define([
 					oViewModel.setProperty("/tableBusyDelay", iOriginalBusyDelay);
 				});
 				
-				var oView = this.getView();
-				// this.oSF = oView.byId("searchField");
 			},
 
 			/* =========================================================== */
