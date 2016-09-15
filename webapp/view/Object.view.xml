@@ -9,7 +9,7 @@
 		id="page"
 		navButtonPress="onNavBack"
 		showNavButton="true"
-		title="{i18n>objectTitle}"
+		title="{Name}"
 		busy="{objectView>/busy}"
 		busyIndicatorDelay="{objectView>/delay}">
 
@@ -17,8 +17,110 @@
 			<ObjectHeader
 				id="objectHeader"
 				title="{Name}"
->
+				fullScreenOptimized="true"
+				responsive="true">
+				<attributes>
+					<ObjectAttribute
+						title="BP Number"
+						text="{Partner}"
+					/>
+					<ObjectAttribute
+						title="SSN"
+						text="{SSN}"
+					/>
+					<ObjectAttribute
+						title="Email"
+						text="{Email}"
+					/>
+					<ObjectAttribute
+						title="Telephone"
+						text="{Telephone}"
+					/>
+					<ObjectAttribute
+						title="Address"
+						text="{Street}, {PostalCode} {City}"
+					/>
+					<ObjectAttribute
+						title="Country"
+						text="{Country}"
+					/>
+				</attributes>
 			</ObjectHeader>
+ 		</semantic:content>
+
+		<semantic:content>
+			<TileContainer
+			id="tileContainer">
+				<StandardTile
+					id="loans"
+					icon=""
+					title="Loans"
+					info="Overdue"
+					number="2356"
+					numberUnit="euro"
+					infoState="Error"
+				/>
+				<StandardTile
+					id="deposits"
+					icon=""
+					title="Deposits"
+					info="28 days ago"
+				/>
+				<StandardTile
+					icon=""
+					title=""
+					info=""
+				/>
+				<StandardTile
+					icon=""
+					title=""
+					info=""
+				/>
+				<StandardTile
+					icon=""
+					title=""
+					info=""
+				/>
+				<StandardTile
+					icon=""
+					title=""
+					info=""
+				/>
+				<StandardTile
+					icon=""
+					title=""
+					info=""
+				/>
+				<StandardTile
+					icon=""
+					title=""
+					info=""
+				/>
+				<StandardTile
+					icon=""
+					title=""
+					info=""
+				/>
+				<StandardTile
+					icon=""
+					title=""
+					info=""
+				/>
+				<StandardTile
+					icon=""
+					title=""
+					info=""
+				/>
+				<StandardTile
+					icon=""
+					title=""
+					info=""
+				/><StandardTile
+					icon=""
+					title=""
+					info=""
+				/>
+			</TileContainer>
  		</semantic:content>
 
 		<semantic:sendEmailAction>
