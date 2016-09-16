@@ -84,7 +84,10 @@ sap.ui.define([
 					this.getRouter().navTo("worklist", {}, true);
 				}
 			},
-
+			
+			onLoanNav : function(oEvent) {
+				
+			},
 			/* =========================================================== */
 			/* internal methods                                            */
 			/* =========================================================== */

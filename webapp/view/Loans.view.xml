@@ -69,35 +69,47 @@
 				</headerToolbar>
 
 				<columns>
-					<Column id="companyColumn">
+					<Column id="companyColumn" width="110px">
 						<Text text="Loan Number" id="companyColumnTitle"/>
 					</Column>
-					<Column id="capitalColumn">
+					<Column id="capitalColumn"
+						demandPopin="true"
+						minScreenWidth="Tablet">
 						<Text text="Capital" id="capitalColumnTitle"/>
 					</Column>
 					<Column id="remBalColumn">
 						<Text text="Remaining Balance" id="remBalColumnTitle"/>
 					</Column>
-					<Column id="effBalColumn">
-						<Text text="Effective Balance" id="effBalColumnTitle"/>
-					</Column>
 					<Column id="dueColumn">
 						<Text text="Due" id="dueColumnTitle"/>
 					</Column>
-					<Column id="repaymentColumn">
+					<Column id="repaymentColumn"
+						demandPopin="true"
+						minScreenWidth="Desktop">
 						<Text text="Repayment" id="repaymentColumnTitle"/>
 					</Column>
-					<Column id="interestColumn">
+					<Column id="interestColumn"
+						demandPopin="true"
+						minScreenWidth="Desktop">
 						<Text text="Interest" id="interestColumnTitle"/>
 					</Column>
-					<Column id="costColumn">
+					<Column id="costColumn"
+						demandPopin="true"
+						minScreenWidth="Desktop">
 						<Text text="Other Cost" id="costColumnTitle"/>
 					</Column>
-					<Column id="payoffColumn">
+					<Column id="payoffColumn"
+						demandPopin="true"
+						minScreenWidth="Desktop">
 						<Text text="Payoff" id="payoffColumnTitle"/>
 					</Column>
 					<Column id="currencyColumn">
-						<Text text="Currency" id="currencyColumnTitle" textAlign="Right"/>
+						<Text text="Currency" id="currencyColumnTitle"/>
+					</Column>
+					<Column id="sapColumn"
+						demandPopin="true"
+						minScreenWidth="Desktop">
+						<Text text="" id="sapColumnTitle" textAlign="Right"/>
 					</Column>
 				</columns>
 
@@ -108,32 +120,22 @@
 										title="{ path: 'LoanNumber', formatter: '.formatter.loanFormatter' }"
 										text="{ProductText}"
 										titleActive="true"
-										titlePress="onShowDetailPopover" />
+										 />
 							
 							<Text text="{Capital}"/>
 							<Text text="{RemBalance}"/>
-							<Text text="{EffBalance}"/>
 							<Text text="{DueBalance}"/>
 							<Text text="{RepaymentAmount}"/>
 							<Text text="{InterestAmount}"/>
 							<Text text="{CostAmount}"/>
 							<Text text="{PayoffAmount}"/>
 							<FormattedText htmlText="&lt;strong&gt;{Currency}&lt;/strong&gt;" />
+							<Link text="Open SAP" target="_blank" href="http://apprekdev01.ad.acme.is:8000/sap/bc/gui/sap/its/webgui/?sap-client=666&amp;sap-language=EN&amp;~transaction=*FNVS param=;RMF67-XRANL={LoanNumber};VDARL-BUKRS={CompanyCode};DYNP_OKCODE==ENTE"></Link>
 						</cells>
 					</ColumnListItem>
 				</items>
 			</Table>
-<!--			<smartTable:SmartTable
-				entitySet="loansSet"
-				tableType="ResponsiveTable"
-				useExportToExcel="true"
-				useVariantManagement="false"
-				useTablePersonalisation="true"
-				header="Line Items"
-				showRowCount="true"
-				enableAutoBinding="true"
-				demandPopin="true"/>
--->		</semantic:content>
+		</semantic:content>
 
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
