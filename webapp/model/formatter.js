@@ -28,11 +28,27 @@ sap.ui.define([
 				return oFormat.parse(sValue);
 			},
 			
+			millionFormatter : function (sValue) {
+				return sValue / 1000000;
+			},
+			thousundFormatter : function (sValue) {
+				return sValue / 1000;
+			}, 
 			pathFormatter : function () {
 				var sPath = this.getView().getBindingContext("loansView").getPath();
 				return sPath + "/loansSet";
+			},
+			
+			loanFormatter : function(sValue) {
+				return Number.parseInt(sValue, 10).toString();
+			},
+			
+			formatMapUrl: function(sStreet, sCity, sCountry) {
+				var sResult = "";
+				var sQuery = sStreet + "," + sCity + "," + sCountry;
+				sResult = "https://maps.googleapis.com/maps/api/staticmap?center=" + sQuery + "&zoom=13&size=600x600&maptype=roadmap&markers=color:red|label:*|" + sQuery + "&key=AIzaSyDeTzkaVtoWwVpzrb23cgpl95iKCHrcq2A";
+				return sResult;
 			}
-
 			
 		};
 

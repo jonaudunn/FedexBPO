@@ -9,7 +9,8 @@ sap.ui.define([
 		return UIComponent.extend("is.applicon.test.Component", {
 
 			metadata : {
-				manifest: "json"
+				manifest: "json",
+				includes : [ "Icon/style.css" ]
 			},
 
 			/**

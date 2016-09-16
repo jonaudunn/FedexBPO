@@ -1,7 +1,9 @@
 <mvc:View
 	controllerName="is.applicon.test.controller.Object"
 	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
 	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
 	xmlns:semantic="sap.m.semantic"
 	xmlns:footerbar="sap.ushell.ui.footerbar">
 
@@ -48,85 +50,112 @@
 				</attributes>
 			</ObjectHeader>
  		</semantic:content>
-
 		<semantic:content>
-			<TileContainer
-			id="tileContainer">
-				<StandardTile
-					press="onPress"
-					id="loans"
-					icon="sap-icon://warning"
-					title="{TotalLoans} Loans"
-					info="{TotalDueBalance}"
-					number="{
-						path: 'TotalRemBalance'
-						
-					}"
-					numberUnit="{Currency}"
-					infoState="Error"
-				/>
-				<StandardTile
-					id="deposits"
-					icon=""
-					title="Deposits"
-					info="28 days ago"
-				/>
-				<StandardTile
-					icon=""
-					title=""
-					info=""
-				/>
-				<StandardTile
-					icon=""
-					title=""
-					info=""
-				/>
-				<StandardTile
-					icon=""
-					title=""
-					info=""
-				/>
-				<StandardTile
-					icon=""
-					title=""
-					info=""
-				/>
-				<StandardTile
-					icon=""
-					title=""
-					info=""
-				/>
-				<StandardTile
-					icon=""
-					title=""
-					info=""
-				/>
-				<StandardTile
-					icon=""
-					title=""
-					info=""
-				/>
-				<StandardTile
-					icon=""
-					title=""
-					info=""
-				/>
-				<StandardTile
-					icon=""
-					title=""
-					info=""
-				/>
-				<StandardTile
-					icon=""
-					title=""
-					info=""
-				/><StandardTile
-					icon=""
-					title=""
-					info=""
-				/>
-			</TileContainer>
+			<Panel expandable="true" expanded="false" headerText="See Customer Location" width="auto" class="sapUiResponsiveMargin"> 
+				<content>
+					<Image src="{ parts: [ {path: 'Street'}, {path: 'City'}, {path: 'Country'} ], formatter : '.formatter.formatMapUrl' }" />
+				</content>
+			</Panel>
  		</semantic:content>
+		
+		<semantic:content>
+			<FlexBox
+				height="auto"
+				alignItems="Start"
+				wrap="Wrap"
+				justifyContent="Start">
+				<items>
+					<SlideTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout">
+						<tiles>
+							<GenericTile
+								backgroundImage="http://i.imgur.com/iTUgtgz.jpg"
+								frameType="TwoByOne" press="pressOnTileOne">
+								<tileContent>
+									<TileContent footer="August 21, 2016">
+										<content>
+											<NewsContent
+												contentText="Some SAP company in Iceland sends a group of idiots to Mont Blanc"
+												subheader="Up there and back again">
+											</NewsContent>
+										</content>
+									</TileContent>
+								</tileContent>
+							</GenericTile>
+							<GenericTile
+								backgroundImage="http://lorempixel.com/400/200/business/4"
+								frameType="TwoByOne" press="pressOnTileOne">
+								<tileContent>
+									<TileContent footer="August 21, 2016">
+										<content>
+											<NewsContent
+												contentText="SAP Unveils Powerful New Player Comparision Tool Exclusively on NFL.com"
+												subheader="Today, SAP News">
+											</NewsContent>
+										</content>
+									</TileContent>
+								</tileContent>
+							</GenericTile>
+							<GenericTile
+								backgroundImage="http://lorempixel.com/400/200/business/1"
+								frameType="TwoByOne" press="pressOnTileTwo">
+								<tileContent>
+									<TileContent footer="August 21, 2016">
+										<content>
+											<NewsContent
+												contentText="Wind Map: Monitoring Real-Time and Forecasted Wind Conditions across the Globe"
+												subheader="Today, SAP News">
+											</NewsContent>
+										</content>
+									</TileContent>
+								</tileContent>
+							</GenericTile>
+						</tiles>
+					</SlideTile>
+				</items>
+			</FlexBox>
+ 		</semantic:content>
+ 		
+ 		<semantic:content>
+			<FlexBox
+				height="auto"
+				alignItems="Start"
+				wrap="Wrap"
+				justifyContent="Start">
+				<items>
+					<!--<TileContainer id="tileContainer" height="60%">-->
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{TotalLoans} Loans" subheader="Remaining balance" frameType="OneByOne"
+						press="onPress">
+						<tileContent>
+							<TileContent unit="{Currency}">
+								<content>
+									<NumericContent value="{path: 'TotalRemBalance', formatter: '.formatter.millionFormatter' }" scale="M" icon="sap-icon://loan"/>
+								</content>
+							</TileContent>
+						</tileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Payment balance" subheader="Overdue" frameType="OneByOne"
+						press="onPress">
+						<tileContent>
+							<TileContent unit="{Currency}">
+								<content>
+									<NumericContent value="{path: 'TotalDueBalance', formatter: '.formatter.thousandFormatter' }" scale="K" truncateValueTo="3" icon="sap-icon://paid-leave" />
+								</content>
+							</TileContent>
+						</tileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Deposits" subheader="Account Balance" frameType="OneByOne"
+						press="onPress">
+						<tileContent>
+							<TileContent unit="ISK">
+								<content>
+									<NumericContent value="1.7" scale="Mil" valueColor="Good" indicator="Up" icon="sap-icon://simple-payment"/>
+								</content>
+							</TileContent>
+						</tileContent>
+					</GenericTile>
+				</items>
+			</FlexBox>
+		</semantic:content>
 
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>

@@ -81,6 +81,9 @@
 					<Column id="effBalColumn">
 						<Text text="Effective Balance" id="effBalColumnTitle"/>
 					</Column>
+					<Column id="dueColumn">
+						<Text text="Due" id="dueColumnTitle"/>
+					</Column>
 					<Column id="repaymentColumn">
 						<Text text="Repayment" id="repaymentColumnTitle"/>
 					</Column>
@@ -102,7 +105,7 @@
 					<ColumnListItem>
 						<cells>
 							<ObjectIdentifier
-										title="{LoanNumber}"
+										title="{ path: 'LoanNumber', formatter: '.formatter.loanFormatter' }"
 										text="{ProductText}"
 										titleActive="true"
 										titlePress="onShowDetailPopover" />
@@ -110,6 +113,7 @@
 							<Text text="{Capital}"/>
 							<Text text="{RemBalance}"/>
 							<Text text="{EffBalance}"/>
+							<Text text="{DueBalance}"/>
 							<Text text="{RepaymentAmount}"/>
 							<Text text="{InterestAmount}"/>
 							<Text text="{CostAmount}"/>

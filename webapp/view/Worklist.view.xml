@@ -28,6 +28,7 @@
 				busyIndicatorDelay="{worklistView>/tableBusyDelay}"
 				growing="true"
 				growingScrollToLoad="true"
+				growingThreshold="30"
 				updateFinished="onUpdateFinished">
 
 				<headerToolbar>
@@ -44,13 +45,38 @@
 				</headerToolbar>
 
 				<columns>
+					<Column id="partnerColumn">
+						<Text text="Partner" id="partnerColumnTitle"/>
+					</Column>
 					<Column id="nameColumn">
 						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
 					</Column>
-					<Column id="phoneColumn">
+					<Column id="ssnColumn">
+						<Text text="SSN" id="ssnColumnTitle"/>
+					</Column>
+					<Column id="streetColumn"
+						demandPopin="true"
+						minScreenWidth="Desktop">
+						<Text text="Street" id="streetColumnTitle"/>
+					</Column>
+					<Column id="cityColumn"
+						demandPopin="true"
+						minScreenWidth="Desktop">
+						<Text text="City" id="cityColumnTitle"/>
+					</Column>
+					<Column id="countryColumn"
+						demandPopin="true"
+						minScreenWidth="Desktop">
+						<Text text="Country" id="countryColumnTitle"/>
+					</Column>
+					<Column id="phoneColumn"
+					demandPopin="true"
+						minScreenWidth="Desktop">
 						<Text text="{i18n>tablePhoneColumnTitle}" id="phoneColumnTitle"/>
 					</Column>
-					<Column id="emailColumn">
+					<Column id="emailColumn"
+					demandPopin="True"
+						minScreenWidth="Desktop">
 						<Text text="{i18n>tableEmailColumnTitle}" id="emailColumnTitle"/>
 					</Column>
 				</columns>
@@ -61,7 +87,12 @@
 						press="onPress">
 						<cells>
 							<ObjectIdentifier
-								title="{Name}"/>
+								title="{Partner}"/>
+							<Text text="{Name}"/>
+							<Text text="{SSN}"/>
+							<Text text="{Street}"/>
+							<Text text="{PostalCode} {City}"/>
+							<Text text="{Country}"/>
 							<Text text="{Telephone}"/>
 							<Text text="{Email}"/>
 						</cells>
